@@ -9,7 +9,7 @@ void main() {
 
 class MyApp extends StatefulWidget{
   @override
-  _State createState() => _State();
+  State createState() => _State();
 }
 
 class _State extends State<MyApp>{
