@@ -13,6 +13,15 @@ class MyApp extends StatefulWidget{
 }
 
 class _State extends State<MyApp>{
+
+  String _value = 'Hello';
+
+  void _onPressed(){
+    setState((){
+      _value = ' Yuuk';
+    });
+  }
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -23,9 +32,10 @@ class _State extends State<MyApp>{
         padding: const EdgeInsets.all(32.0),
         child: Center(
           child: Column(
-            children: const <Widget>[
-              Text('Hello'),
-              Text('Yuuk'),
+            children: <Widget>[
+              Text(_value),
+              ElevatedButton(onPressed: _onPressed, child: const Text('Click me'))
+              
             ],
           )),
 
