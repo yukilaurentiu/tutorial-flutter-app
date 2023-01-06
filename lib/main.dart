@@ -15,6 +15,7 @@ class MyApp extends StatefulWidget{
 class _State extends State<MyApp>{
 
   String _value = 'Hello';
+ 
 
   void _onPressed(){
     setState((){
@@ -22,11 +23,17 @@ class _State extends State<MyApp>{
     });
   }
 
+   void _onClicked(){
+    setState((){
+      _value = DateTime.now().toString();
+    });
+  }
+  
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Yuuk here'),
+        title: const Text('AppBar'),
       ),
       body: Container(
         padding: const EdgeInsets.all(32.0),
@@ -34,7 +41,8 @@ class _State extends State<MyApp>{
           child: Column(
             children: <Widget>[
               Text(_value),
-              ElevatedButton(onPressed: _onPressed, child: const Text('Click me'))
+              ElevatedButton(onPressed: _onPressed, child: const Text('Click me')),
+              TextButton(onPressed: _onClicked, child: const Text('Click me'))
               
             ],
           )),
