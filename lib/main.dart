@@ -14,32 +14,20 @@ class MyApp extends StatefulWidget{
 
 class _State extends State<MyApp>{
 
-  int _value = 0;
+  String _value = 'Your typing ...';
  
-
-  // void _onPressed(){
-  //   setState((){
-  //     _value = ' Yuuk';
-  //   });
-  // }
-
-  //  void _onClicked(){
-  //   setState((){
-  //     _value = DateTime.now().toString();
-  //   });
-  // }
-  
-  void _add(){
-    setState(() {
-      _value++;
+  void _onChanged(String value){
+    setState(() { 
+      _value = 'Changed $value';
     });
   }
 
-  void _subtract(){
+  void _onSubmit(String value){
     setState(() {
-      _value--;
+      _value = 'Submit $value';
     });
   }
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -51,15 +39,21 @@ class _State extends State<MyApp>{
         child: Center(
           child: Column(
             children: <Widget>[
-              // Text(_value),
-              // ElevatedButton(onPressed: _onPressed, child: const Text('Click me')),
-              // TextButton(onPressed: _onClicked, child: const Text('Click me'))
-              Text('value is $_value'),
-              IconButton(onPressed: _add, icon: const Icon(Icons.add)),
-              IconButton(onPressed: _subtract, icon: const Icon(Icons.remove)),
+              Text(_value),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Hello',
+                  hintText: 'typing here!',
+                  icon: Icon(Icons.edit)
+                ),
+                autocorrect: true,
+                autofocus: true,
+                keyboardType: TextInputType.text,
+                onChanged: _onChanged,
+                onSubmitted: _onSubmit,
+              )
             ],
           )),
-
       ),
     );
   }
